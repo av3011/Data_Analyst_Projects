@@ -35,11 +35,30 @@ Each project includes:
 
 ## 📎 About Me
 
-👋 I'm **Asif Vahora**, Aspiring Data Analyst with experience analyzing real-world datasets using SQL, Power BI,
-Python, and Excel. Proficient in data cleaning, EDA, dashboarding, and generating business insights.
+# 👋 Hi, I'm Asif Vahora
 
-🌐 Connect with me:
-- [LinkedIn](https://www.linkedin.com/in/asif-vahora-4bb224241)
-- [GitHub](https://github.com/av3011)
+🎯 **Aspiring Data Analyst** with experience analyzing real-world datasets using **SQL**, **Power BI**, **Python**, and **Excel**.  
+🧹 Proficient in **data cleaning**, **exploratory data analysis (EDA)**, interactive **dashboarding**, and delivering **actionable business insights**.  
+📊 Passionate about transforming data into meaningful decisions and solving business problems with analytics.
+
+---
+
+## 🛠️ Tools & Technologies
+
+![SQL](https://img.shields.io/badge/SQL-Server-informational?style=flat&logo=postgresql&logoColor=white&color=blue)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboarding-orange?style=flat&logo=powerbi&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-Advanced-green?style=flat&logo=microsoft-excel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-Data%20Analysis-yellow?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Cleaning-purple?style=flat&logo=pandas)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-blueviolet?style=flat&logo=matplotlib)
+![Seaborn](https://img.shields.io/badge/Seaborn-Statistical%20Plots-lightblue?style=flat&logo=seaborn)
+
+
+---
+
+## 🌐 Connect with Me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Asif%20Vahora-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/asif-vahora-4bb224241)  
+[![GitHub](https://img.shields.io/badge/GitHub-av3011-333?style=flat&logo=github)](https://github.com/av3011)
 
 ---
