@@ -56,8 +56,8 @@ Key tables:
 
 
 
-## 📁 Folder Structure
-
+### 📁 Customer Engagement & Campaign Performance Analytics
+```
 Customer_Engagement_Campaign_Performance_Analytics/
 │
 ├── Customer_Engagement_Campaign_Performance_Analytics.sql # SQL cleaning and analysis scripts
@@ -69,7 +69,7 @@ Customer_Engagement_Campaign_Performance_Analytics/
 ├── cust_review.csv
 ├── engag_data.csv
 ├── README.md
-
+```
 ## 📎 Credits
 
 Prepared by **Asif Vahora** 
