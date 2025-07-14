@@ -33,31 +33,7 @@ Each project includes:
 
 ---
 
-## 📎 About Me
+## 👋 About Me
 
-# 👋 Hi, I'm Asif Vahora
-
-🎯 **Aspiring Data Analyst** with experience analyzing real-world datasets using **SQL**, **Power BI**, **Python**, and **Excel**.  
-🧹 Proficient in **data cleaning**, **exploratory data analysis (EDA)**, interactive **dashboarding**, and delivering **actionable business insights**.  
-📊 Passionate about transforming data into meaningful decisions and solving business problems with analytics.
-
----
-
-## 🛠️ Tools & Technologies
-
-![SQL](https://img.shields.io/badge/SQL-336791?style=flat&logo=postgresql&logoColor=white)
-![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
-![Seaborn](https://img.shields.io/badge/Seaborn-9A1EAE?style=flat&logo=seaborn&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white)
-
----
-
-## 🌐 Connect with Me
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Asif%20Vahora-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/asif-vahora-4bb224241)  
-[![GitHub](https://img.shields.io/badge/GitHub-av3011-333?style=flat&logo=github)](https://github.com/av3011)
-
----
+This portfolio was created by [Asif Vahora](https://github.com/av3011).  
+To learn more about my background, skills, and contact info, visit my [GitHub profile](https://github.com/av3011).
