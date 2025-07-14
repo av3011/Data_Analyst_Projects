@@ -18,14 +18,15 @@ To perform an exploratory data analysis (EDA) on product sales data using Python
 - **CSV File** (Product sales data)
 - **PowerPoint** (for business report/presentation)
 
-## 🗃️ Project Structure
-
+## 🗃️ E-Commerce Customer Segmentation Analysis
+```
 E-Commerce_Customer_Segmentation_Analysis/
 │
 ├── E-Commerce_Customer_Segmentation_Analysis.ipynb # Main Jupyter Notebook with analysis
 ├── E-Commerce_Customer_Segmentation_Analysis.pptx # Final presentation/report
 ├── product_sales_data.csv # Raw dataset
 ├── README.md
+```
 
 
 

@@ -23,8 +23,8 @@ To clean and analyze multi-store sales, product, and store data using SQL and Po
 - **Power BI** – Interactive dashboards, drill-down analysis, KPIs
 - **CSV Files** – Raw data sources
 
-## 🗃️ Project Structure
-
+## 🗃️ Multi-Store Sales Performance Analysis
+```
 Multi_Store_Sales_Analysis/
 │
 ├── Multi_Store_Analysis.sql # SQL scripts for data cleaning & analysis
@@ -34,7 +34,7 @@ Multi_Store_Sales_Analysis/
 ├── sales.csv 
 ├── stores.csv 
 ├── README.md
-
+```
 
 ## 🧹 Data Cleaning & Transformation
 
