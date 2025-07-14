@@ -45,14 +45,13 @@ Each project includes:
 
 ## 🛠️ Tools & Technologies
 
-![SQL](https://img.shields.io/badge/SQL-Server-informational?style=flat&logo=postgresql&logoColor=white&color=blue)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboarding-orange?style=flat&logo=powerbi&logoColor=white)
-![Excel](https://img.shields.io/badge/Excel-Advanced-green?style=flat&logo=microsoft-excel&logoColor=white)
-![Python](https://img.shields.io/badge/Python-Data%20Analysis-yellow?style=flat&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Cleaning-purple?style=flat&logo=pandas)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-blueviolet?style=flat&logo=matplotlib)
-![Seaborn](https://img.shields.io/badge/Seaborn-Statistical%20Plots-lightblue?style=flat&logo=seaborn)
-
+![SQL](https://img.shields.io/badge/SQL-336791?style=flat&logo=postgresql&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-9A1EAE?style=flat&logo=seaborn&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white)
 
 ---
 
