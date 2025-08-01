@@ -13,23 +13,30 @@ Each project includes:
 ## 📁 Projects Included
 
 ### 1. 📊 Customer Engagement & Campaign Performance Analytics
-**Tools:** SQL, Power BI  
+**Tools:** SQL (MsSQL), Power BI  
 **Summary:** Analyzed multi-channel marketing data to uncover top-performing campaigns, content engagement, and regional preferences.  
 ➡️ [Project README](./Customer_Engagement_Campaign_Performance_Analytics/README.md)
 
 ---
 
-### 2. 🛒 E-Commerce Customer Segmentation Analysis
-**Tools:** Python (Pandas, Seaborn, Matplotlib)  
-**Summary:** Segmented customer behavior by gender, age, occupation, and geography to enable targeted promotions and inventory planning.  
-➡️ [Project README](./E-Commerce_Customer_Segmentation_Analysis/README.md)
+### 2. 🧸 Multi-Store Sales Performance Analysis
+**Tools:** SQL (MsSQL), Power BI  
+**Summary:** Evaluated store, product, and inventory performance across 50 retail locations. Delivered insights that boosted revenue and optimized stock planning.  
+➡️ [Project README](./Multi_Store_Sales_Analysis/README.md)
 
 ---
 
-### 3. 🧸 Multi-Store Sales Performance Analysis
-**Tools:** SQL, Power BI  
-**Summary:** Evaluated store, product, and inventory performance across 50 retail locations. Delivered insights that boosted revenue and optimized stock planning.  
-➡️ [Project README](./Multi_Store_Sales_Analysis/README.md)
+### 3. 🎓 EdTech Lead Funnel Analysis
+**Tools:** Python (Pandas), SQL (MsSQL)  
+**Summary:** Analyzed lead funnel, drop-offs, and manager performance for an EdTech platform. Identified key stages with high drop-out rates, uncovered gender-based conversion trends, and provided actionable recommendations that could potentially increase conversions from 19.5% to 24–26%.  
+➡️ [Project README](./EdTech_Lead_Analysis/README.md)
+
+---
+
+### 4. 🛒 E-Commerce Customer Segmentation Analysis
+**Tools:** Python (Pandas, Seaborn, Matplotlib)  
+**Summary:** Segmented customer behavior by gender, age, occupation, and geography to enable targeted promotions and inventory planning.  
+➡️ [Project README](./E-Commerce_Customer_Segmentation_Analysis/README.md)
 
 ---
 
