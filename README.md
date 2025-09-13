@@ -27,13 +27,13 @@ Analyzed multi-channel marketing data using SQL & Power BI to evaluate campaign 
 ### 🧸 [Multi-Store Sales Performance Analysis](https://github.com/av3011/Data_Analyst_Projects/tree/master/Multi_Store_Sales_Analysis)
 Evaluated store and product performance across locations using SQL and Power BI, leading to optimized inventory and increased revenue.
 
-### 🎓 [EdTech Lead Funnel Analysis](https://github.com/av3011/Data_Analyst_Projects/tree/master/EdTech_Lead_Analysis)  
+### 🎓 [EdTech Lead Funnel Analysis](https://github.com/av3011/Data_Analyst_Projects/tree/master/EdTech_Lead_Funnel_Analysis)  
 Explored lead drop-offs, conversion patterns, and manager performance using SQL and Python. Provided actionable insights that could boost conversion rate from 19.5% to 24–26% for an EdTech platform.
 
 ### 🛒 [E-Commerce Customer Segmentation Analysis](https://github.com/av3011/Data_Analyst_Projects/tree/master/E-Commerce_Customer_Segmentation_Analysis)
 Used Python (Pandas, Seaborn, Matplotlib) to segment customer behavior by demographics and product preferences to drive marketing strategy.
 
-### 🍷 [Wine Quality Prediction](https://github.com/av3011/Data_Analyst_Projects/tree/master/Wine_Quality_Prediction)
+### 🍷 [Wine Quality Prediction](https://github.com/av3011/Data_Analyst_Projects/tree/master/Wine_Quality_Prediction%20(ML))
 Applied Python (Pandas, Scikit-learn, Matplotlib) to analyze 1,600+ wine samples and predict quality (Good vs Bad). 
 Built and compared multiple ML models (Logistic Regression, Random Forest, XGBoost) and handled class imbalance using SMOTE, achieving 82% accuracy with balanced precision-recall.
 
