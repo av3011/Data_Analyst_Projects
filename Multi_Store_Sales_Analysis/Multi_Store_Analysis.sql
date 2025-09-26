@@ -13,6 +13,15 @@ alter column STORE_ID INT;
 alter table products
 alter column product_id INT;
 
+alter table products
+alter column product_cost DECIMAL(10,2);
+
+alter table products
+alter column product_price DECIMAL(10,2);
+
+alter table products
+alter column units int;
+
 alter table SALES
 alter column product_id INT;
 
@@ -33,40 +42,20 @@ SELECT
     (SELECT COUNT(STORE_NAME) FROM STORES) AS TOTAL_STORES,
     (SELECT COUNT(DISTINCT(PRODUCT_NAME)) FROM PRODUCTS) AS TOTAL_PRODUCTS,
     (SELECT COUNT(DISTINCT(STORE_CITY)) FROM STORES) AS CITY_COUNT,
-    (SELECT SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) 
-     FROM PRODUCTS P 
+    (SELECT SUM(P.Product_Price * s.units) FROM PRODUCTS P 
      JOIN SALES S ON P.PRODUCT_ID = S.PRODUCT_ID) AS TOTAL_SALE;
+
+
 
 
 SELECT * FROM SUMMARY;
 
------monthly sale in each store-----
-CREATE VIEW MONTHLYSALE AS
-SELECT 
-    YEAR(s.date) AS sales_year, 
-    MONTH(s.date) AS sales_month, 
-    st.store_name, 
-    SUM(CAST(REPLACE(p.product_price,'$', '') AS DECIMAL(10,2))* S.UNITS) AS TOTAL_SALE
-FROM 
-    stores st
-JOIN 
-    sales s ON st.store_id = s.store_id
-JOIN 
-    products p ON s.product_id = p.product_id
-GROUP BY 
-    YEAR(s.date), 
-    MONTH(s.date), 
-    st.store_name;
-
-SELECT * FROM MONTHLYSALE;
-
---------------monthly sale based on location---------------
+--------------yearly sale based on location---------------
 CREATE VIEW LOCATIONSALE AS
 SELECT 
     YEAR(s.date) AS sales_year, 
-    MONTH(s.date) AS sales_month, 
     st.store_location,
-    SUM(CAST(REPLACE(p.product_price,'$', '') AS DECIMAL(10,2))* S.UNITS) AS TOTAL_SALE
+    SUM(p.product_price * S.UNITS) AS TOTAL_SALE
 FROM 
     stores st
 JOIN 
@@ -75,35 +64,17 @@ JOIN
     products p ON s.product_id = p.product_id
 GROUP BY 
     YEAR(s.date), 
-    MONTH(s.date), 
     st.store_location;
 
 
-SELECT * FROM LOCATIONSALE ORDER BY sales_month;
+SELECT * FROM LOCATIONSALE ORDER BY sales_year;
 
--------------year wise sale in each store------------
-CREATE VIEW YEARLYSTORESALE AS
-SELECT 
-    YEAR(s.date) AS sales_year, 
-    st.store_name, 
-    SUM(CAST(REPLACE(p.product_price,'$', '') AS DECIMAL(10,2))* S.UNITS) AS TOTAL_SALE
-FROM 
-    stores st
-JOIN 
-    sales s ON st.store_id = s.store_id
-JOIN 
-    products p ON s.product_id = p.product_id
-GROUP BY 
-    YEAR(s.date), 
-    st.store_name;
-
-SELECT * FROM YEARLYSTORESALE;
 
 --------------top 5 cities in overall sale---------------
 CREATE VIEW TOPCITIES AS
 SELECT   
     st.store_city,
-    SUM(CAST(REPLACE(p.product_price,'$', '') AS DECIMAL(10,2))* S.UNITS) AS TOTAL_SALE
+    SUM(p.product_price * S.UNITS) AS TOTAL_SALE
 FROM 
     stores st
 JOIN 
@@ -117,15 +88,14 @@ GROUP BY
 SELECT top 5 * FROM topcities ORDER BY TOTAL_SALE desc;
 
 
--------------TOP 5 AND LEAST 5 STORES YEAR WISE------------
-CREATE VIEW TOPLEASTSOTRES AS
+-------------TOP 5 STORES YEAR WISE------------
+CREATE VIEW TOPSOTRES AS
 WITH RankedSales AS (
     SELECT 
         YEAR(s.date) AS sales_year, 
         st.store_name, 
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2))* S.UNITS) AS total_sale,
-        RANK() OVER (PARTITION BY YEAR(s.date) ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2))* S.UNITS) DESC) AS rank_desc,
-        RANK() OVER (PARTITION BY YEAR(s.date) ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2))* S.UNITS) ASC) AS rank_asc
+        SUM(p.product_price * S.UNITS) AS total_sale,
+        RANK() OVER (PARTITION BY YEAR(s.date) ORDER BY SUM(p.product_price * S.UNITS) DESC) AS rank_desc
     FROM 
         stores st
     JOIN 
@@ -142,14 +112,13 @@ SELECT
     total_sale,
     CASE 
         WHEN rank_desc <= 5 THEN 'Top 5'
-        WHEN rank_asc <= 5 THEN 'Least 5'
     END AS category
 FROM 
     RankedSales
 WHERE 
-    rank_desc <= 5 OR rank_asc <= 5;
+    rank_desc <= 5;
 
-SELECT * FROM TOPLEASTSOTRES ORDER BY 
+SELECT * FROM TOPSOTRES ORDER BY 
     sales_year, 
     category, 
     total_sale DESC;
@@ -161,7 +130,7 @@ WITH YearlySales AS (
     SELECT 
         YEAR(s.date) AS sales_year, 
         st.store_name, 
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10,2))* S.UNITS) AS total_sale
+        SUM(p.product_price* S.UNITS) AS total_sale
     FROM 
         stores st
     JOIN 
@@ -194,30 +163,6 @@ WHERE
 
 SELECT * FROM StoresImprovedSales;
 
------------QUATERLY SALE FOR EACH STORE-------------
-CREATE VIEW QUATERLYSALE AS
-SELECT 
-    st.store_name, 
-    YEAR(s.date) AS sales_year, 
-    DATEPART(QUARTER, s.date) AS sales_quarter, 
-    SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) AS total_sales
-FROM 
-    stores st
-JOIN 
-    sales s ON st.store_id = s.store_id
-JOIN 
-    products p ON s.product_id = p.product_id
-WHERE 
-    YEAR(s.date) IN (2022, 2023)
-GROUP BY 
-    st.store_name, 
-    YEAR(s.date), 
-    DATEPART(QUARTER, s.date);
-
-SELECT * FROM QUATERLYSALE ORDER BY 
-    store_name, 
-    sales_year, 
-    sales_quarter;
 
 ------------------STORE PERFORM WELL IN EACH QUATER---------------------
 CREATE VIEW QuarterlyTopStores AS
@@ -226,8 +171,8 @@ WITH QuarterlySales AS (
         YEAR(s.date) AS sales_year,
         DATEPART(QUARTER, s.date) AS sales_quarter,
         st.store_name,
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) AS total_sales,
-        RANK() OVER (PARTITION BY YEAR(s.date), DATEPART(QUARTER, s.date) ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) DESC) AS sales_rank
+        SUM(p.product_price * s.units) AS total_sales,
+        RANK() OVER (PARTITION BY YEAR(s.date), DATEPART(QUARTER, s.date) ORDER BY  SUM(p.product_price * s.units) DESC) AS sales_rank
     FROM 
         stores st
     JOIN 
@@ -256,7 +201,7 @@ SELECT * FROM QuarterlyTopStores ORDER BY
 
 -------------------top 5 PRODUCTS PERFORM WELL IN OVERALL SALE----------------------------------
 CREATE VIEW TOPFIVEPRODUCT AS
-SELECT P.PRODUCT_NAME, SUM(CAST(REPLACE(P.PRODUCT_PRICE, '$','') AS DECIMAL(10,2))* S.UNITS) AS TOTAL_SALE
+SELECT P.PRODUCT_NAME,  SUM(p.product_price * s.units) AS TOTAL_SALE
 FROM PRODUCTS P JOIN SALES S ON P.PRODUCT_ID = S.PRODUCT_ID
 GROUP BY P.PRODUCT_NAME;
 
@@ -269,7 +214,7 @@ WITH PRODUCT_PROFIT AS (
     SELECT 
         PRODUCT_ID, 
         PRODUCT_NAME, 
-        CAST(REPLACE(PRODUCT_PRICE, '$', '') AS DECIMAL(10, 2)) - CAST(REPLACE(PRODUCT_COST, '$', '') AS DECIMAL(10, 2)) AS PROFIT
+        Product_Price - Product_Cost AS PROFIT
     FROM PRODUCTS
 ),
 YEARLY_PROFIT AS (
@@ -312,8 +257,8 @@ WITH QUATERLYPRODUCT AS (
         YEAR(s.date) AS sales_year,
         DATEPART(QUARTER, s.date) AS sales_quarter,
         P.PRODUCT_NAME,
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) AS total_sales,
-        RANK() OVER (PARTITION BY YEAR(s.date), DATEPART(QUARTER, s.date) ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) DESC) AS sales_rank
+         SUM(p.product_price * s.units) AS total_sales,
+        RANK() OVER (PARTITION BY YEAR(s.date), DATEPART(QUARTER, s.date) ORDER BY SUM(p.product_price * s.units) DESC) AS sales_rank
     FROM 
         PRODUCTS P
     JOIN 
@@ -343,8 +288,8 @@ WITH YEARLYPRODUCT AS (
     SELECT 
         YEAR(s.date) AS sales_year,
         P.PRODUCT_NAME,
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) AS total_sales,
-        RANK() OVER (PARTITION BY YEAR(s.date) ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) DESC) AS sales_rank
+         SUM(p.product_price * s.units) AS total_sales,
+        RANK() OVER (PARTITION BY YEAR(s.date) ORDER BY  SUM(p.product_price * s.units) DESC) AS sales_rank
     FROM 
         PRODUCTS P
     JOIN 
@@ -364,58 +309,6 @@ WHERE
 
 SELECT * FROM YEARLYTOPPRODUCT ORDER BY sales_year;
 
-----------------HIGH DEMANDED PRODUCT IN EACH LOCATION----------------------------
-CREATE VIEW TOPLOCATIONPRODUCT AS
-WITH RankedProducts AS (
-    SELECT
-        p.product_name,
-        st.store_city,
-        SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) AS total_sale,
-        ROW_NUMBER() OVER (
-            PARTITION BY st.store_city 
-            ORDER BY SUM(CAST(REPLACE(p.product_price, '$', '') AS DECIMAL(10, 2)) * s.units) DESC
-        ) AS rnk
-    FROM 
-        stores st
-    JOIN 
-        sales s ON st.store_id = s.store_id
-    JOIN 
-        products p ON s.product_id = p.product_id
-    GROUP BY 
-        p.product_name,
-        st.store_city
-)
-SELECT
-    product_name,
-    store_city,
-    total_sale
-FROM 
-    RankedProducts
-WHERE 
-    rnk = 1;
-
-SELECT * FROM TOPLOCATIONPRODUCT ORDER BY store_city;
-
---------------AVG PRODUCTS IN STOCK PER STORE--------
-
-CREATE VIEW PRODUCTINSTOCK AS
-SELECT 
-    ST.STORE_NAME, 
-    P.PRODUCT_NAME, 
-    SUM(I.STOCK_ON_HAND) AS AVG_INVENTORY
-FROM 
-    STORES ST
-JOIN 
-    INVENTORY I ON ST.STORE_ID = I.STORE_ID
-JOIN 
-    PRODUCTS P ON I.PRODUCT_ID = P.PRODUCT_ID
-GROUP BY 
-    ST.STORE_NAME, 
-    P.PRODUCT_NAME;
-
-SELECT * FROM PRODUCTINSTOCK ORDER BY STORE_NAME, PRODUCT_NAME;
-
-
 
 --------------INVENTORY TURNOVER RATIO-------------
 CREATE VIEW TURNOVERRATIO AS
@@ -423,7 +316,7 @@ WITH AVG_INVENTORY AS (
 	SELECT ST. STORE_ID, ST.STORE_NAME, AVG(I.STOCK_ON_HAND) AS AVG_STOCK FROM STORES ST JOIN INVENTORY I ON ST.STORE_ID=I.STORE_ID
 	GROUP BY ST. STORE_ID,ST.STORE_NAME),
 COSTPERSTORE AS (
-	SELECT S.STORE_ID, SUM(CAST(REPLACE(P.PRODUCT_COST, '$', '') AS DECIMAL(10,2))* S.UNITS) AS COGS FROM SALES S JOIN
+	SELECT S.STORE_ID,  SUM(p.product_price * s.units) AS COGS FROM SALES S JOIN
 	PRODUCTS P ON S.PRODUCT_ID=P.PRODUCT_ID GROUP BY STORE_ID)
 SELECT A.STORE_NAME, A.AVG_STOCK, C.COGS, CAST(C.COGS/A.AVG_STOCK AS DECIMAL(10,2)) AS INVENTORY_TURNOVER_RATIO FROM AVG_INVENTORY A
 LEFT JOIN COSTPERSTORE C ON A.STORE_ID=C.STORE_ID; 
