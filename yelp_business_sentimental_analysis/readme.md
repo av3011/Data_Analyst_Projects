@@ -1,4 +1,4 @@
-# 🍽️ Yelp Business Review Analysis using Snowflake, AWS S3 & Python
+# 🍽️ Yelp Business Sentimental Analysis using Snowflake, AWS S3 & Python
 
 ## 📌 Problem Statement
 Yelp business review data was stored in a large semi-structured JSON dataset (~5GB), making it difficult to efficiently process and analyze the data.
@@ -38,7 +38,7 @@ To process and analyze Yelp business and review data using Python, AWS S3, and S
 # 🗃️ Project Structure
 
 ```bash
-Yelp_Business_Analysis/
+yelp_business_sentimental_analysis/
 │
 ├── sample_data/
 │   ├── sample_businesss.json
