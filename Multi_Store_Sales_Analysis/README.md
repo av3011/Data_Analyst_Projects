@@ -69,8 +69,8 @@ Multi_Store_Sales_Analysis/
 
 ## 🚀 Business Impact
 
-- 💡 **+12% ROI** from targeted marketing
-- 📈 **+8% Revenue Growth** by optimizing sales focus
+- 💡 Identified opportunities to improve marketing ROI through targeted sales analysis
+- 📈 Highlighted high-performing products and stores to support revenue growth strategies
 - 📦 Reduced carrying costs through inventory optimization
 - ⏱️ Enabled real-time decision-making via Power BI
 
